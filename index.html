@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('fondo2.jpg'); /* Cambia a la ruta de tu imagen */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .formulario {
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con un poco de transparencia */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        .carta {
+            background-image: url('fondo.jpeg'); /* Cambia a la ruta de tu imagen */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Color del texto */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Más sombra en el texto */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+            margin: 10px;
+            display: none;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .boton {
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .boton:hover {
+            background-color: #ff1493;
+        }
+        #siguienteBtn {
+            display: none;
+            margin-top: 20px;
+            padding: 5px 10px; /* Botón más pequeño */
+            width: auto; /* Ajustar ancho */
+        }
+    </style>
+</head>
+<body>
+    <div class="formulario">
+        <input type="text" id="nombre" placeholder="Tu nombre" required>
+        <button class="boton" onclick="mostrarCarta()">Enviar</button>
+    </div>
+
+    <div id="cartasContainer"></div>
+    <button id="siguienteBtn" class="boton" onclick="mostrarSiguienteCarta()">Siguiente</button>
+
+    <script>
+        let cartas = [];
+        let index = 0;
+
+        function mostrarCarta() {
+            const nombre = document.getElementById("nombre").value;
+
+            if (nombre) {
+                // Limpiar el contenedor y reiniciar cartas
+                document.getElementById("cartasContainer").innerHTML = '';
+                cartas = [];
+
+                // Crear cartas de cumpleaños con mensajes personalizados
+                cartas.push(`
+                    <div class="carta">
+                        <h2>¡Feliz Cumpleaños, Mi Amor! 🎉❤️</h2>
+                        <p>Hoy es un día especial, un recordatorio de lo afortunados que somos de tenerte en nuestras vidas. 🌼 Tu energía, alegría y bondad iluminan nuestros días.</p>
+                        <p>Que este nuevo año esté lleno de experiencias memorables, aventuras emocionantes y momentos de felicidad que te llenen el corazón. 🌷</p>
+                        <p>En cada paso de este camino, recuerda que siempre tendrás a tus seres queridos a tu lado, apoyándote y celebrando contigo cada pequeño logro. 💖</p>
+                        <p>¡Disfruta de cada instante y no olvides que este es solo el comienzo de otro maravilloso capítulo en tu vida! 🎊</p>
+                    </div>
+                `);
+                
+                cartas.push(`
+                    <div class="carta">
+                        <h2>Un deseo especial para ti 💖🌸</h2>
+                        <p>En este día, quiero agradecerte por ser una persona tan increíble. Tu amistad es un regalo que valoro profundamente. 🌺</p>
+                        <p>Que este año te traiga no solo regalos, sino también momentos de alegría y tranquilidad. 🌻 Que cada día esté lleno de oportunidades para ser feliz y crecer.</p>
+                        <p>No hay palabras suficientes para expresar cuánto significas para mí. Espero que siempre encuentres la fuerza para seguir tus sueños y que nunca te falte el amor de quienes te rodean. 🌈</p>
+                        <p>¡Feliz cumpleaños, y que la vida te regale todo lo que mereces! ❤️✨</p>
+                    </div>
+                `);
+                
+                cartas.push(`
+                    <div class="carta">
+                        <h2>Siempre contigo 🌹💞</h2>
+                        <p>En este día tan especial, quiero recordarte lo importante que eres en mi vida. Cada recuerdo compartido es un tesoro que atesoro con cariño. 🎈</p>
+                        <p>La vida es un viaje lleno de altibajos, y estoy agradecido/a de poder recorrer este camino contigo. Que en este nuevo año de vida encuentres la sabiduría para enfrentar cualquier desafío y la valentía para perseguir tus sueños. 🌼</p>
+                        <p>Recuerda que la distancia no puede borrar los lazos que hemos creado. ¡Celebremos juntos los momentos que vendrán y disfrutemos de cada paso del camino! ❤️</p>
+                    </div>
+                `);
+
+                // Nuevas cartas de amor
+                cartas.push(`
+                    <div class="carta">
+                        <h2>Un amor eterno ❤️🌹</h2>
+                        <p>Hoy celebro no solo tu cumpleaños, sino la increíble persona que eres. Eres un regalo en mi vida y estoy agradecido/a por cada momento a tu lado. 💖</p>
+                        <p>Que este nuevo año te traiga todo el amor y la felicidad que mereces. Espero que cada día esté lleno de sonrisas y abrazos cálidos. 🌼</p>
+                        <p>Te quiero más de lo que las palabras pueden expresar. ¡Feliz cumpleaños, mi amor! 🎉💞</p>
+                    </div>
+                `);
+
+                cartas.push(`
+                    <div class="carta">
+                        <h2>Siempre en mi corazón 💖🌺</h2>
+                        <p>En este día especial, quiero que sepas cuánto significas para mí. Tu amor y apoyo han sido un faro en mi vida. 🌷</p>
+                        <p>Deseo que este nuevo año esté lleno de momentos mágicos y dulces sorpresas. Nunca olvides que siempre estaré aquí para ti, apoyándote en cada paso del camino. 🌼</p>
+                        <p>¡Feliz cumpleaños! Que este año sea tan maravilloso como tú lo eres. 🎊❤️</p>
+                    </div>
+                `);
+
+                // Mostrar la primera carta
+                mostrarSiguienteCarta();
+
+                // Limpiar el formulario
+                document.querySelector(".formulario").style.display = "none";
+                document.getElementById("siguienteBtn").style.display = "block";
+            } else {
+                alert("Por favor, ingresa tu nombre.");
+            }
+        }
+
+        function mostrarSiguienteCarta() {
+            if (index < cartas.length) {
+                // Cerrar la carta anterior
+                if (index > 0) {
+                    document.querySelectorAll('.carta')[index - 1].style.display = "none";
+                }
+                // Mostrar la carta actual
+                const cartaContainer = document.getElementById("cartasContainer");
+                cartaContainer.innerHTML += cartas[index];
+                document.querySelectorAll('.carta')[index].style.display = "block";
+                index++;
+            } else {
+                document.getElementById("siguienteBtn").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

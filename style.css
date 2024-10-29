@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('fondo.jpeg'); /* Asegúrate de que este nombre coincida con tu archivo */
+    background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center; /* Centra la imagen */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
